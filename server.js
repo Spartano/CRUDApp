@@ -1,10 +1,20 @@
 const express = require('express');
 app = express();
 port = process.env.PORT || 3000;
+expressLayouts = require('express-ejs-layouts')
 
-app.get('/', (req, res) =>  {
-  res.send('Hello, i am the app')
-})
+
+//configure our app
+//tell express where to look for static assets
+app.use(express.static(__dirname + '/public'));
+
+
+//set ejs as our templating
+app.set('view engine', 'ejs');
+app.use(expressLayouts);
+
+
+app.use(require('./app/routes'));
 
 app.listen(port, () => {
   console.log(`apspListening on http://localhost:${port}`)
