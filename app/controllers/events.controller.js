@@ -11,6 +11,11 @@ showEvents: (req, res) => {
 
   res.render('pages/events', {events : events});
 
+},
+
+showSingle: (req, res) =>{
+  const event = {name: 'basketbal', slug: 'basketball', description:'Throwing into basket'};
+  res.render('pages/single', {event : event})
 }
 
 };
